@@ -59,7 +59,7 @@
                         </div>
                         <div class="bottom">
                             <div class="chats">
-                                <div v-for="singleContact in contacts" class="user-chat">
+                                <div @click="changeChat(index)" v-for="(singleContact, index) in contacts" class="user-chat">
                                     <div  class="user-chat-sx">
                                         <div class="user-img">
                                             <img v-bind:src="singleContact.avatar" :alt="singleContact.name">
@@ -86,10 +86,12 @@
                         <div class="top">
                             <div class="top-sx">
                                 <div class="user-img">
-                                    <img src="img/avatar_1.jpg" alt="Michele">
+                                    <img :src="contacts[indexActive].avatar" :alt="contacts[indexActive].name">
                                 </div>
                                 <div class="user-chat-info">
-                                    <p class="name-user">Michele</p>
+                                    <p class="name-user">
+                                        {{contacts[indexActive].name}}
+                                    </p>
                                     <p>Ultimo messaggio inviato</p>
                                 </div>
                             </div>
@@ -100,14 +102,10 @@
                             </div>
                         </div>
                         <div class="bottom">
-                            <div class="chat">
-                                <div class="message send">
-                                    <div class="text-message">Ciao</div>
-                                    <div class="hour-message">10:00</div>
-                                </div>
-                                <div class="message received">
-                                    <div class="text-message">Wee come stai?</div>
-                                    <div class="hour-message">11:00</div>
+                            
+                            <div class="chat" >
+                                <div v-for="(singlemessage,index) in contacts[indexActive].messages" class="message" :class=" { 'sent' : singlemessage.status == 'sent', 'received' : singlemessage.status =='received' } ">
+                                    {{singlemessage.message}}
                                 </div>
                             </div>
                             <div class="bottom-nav">

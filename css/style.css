@@ -244,8 +244,12 @@ main{
     text-align: end;
 }
 
-.my-container .col-dx .bottom .chat .send{
+.sent{
     background-color: lightgreen;
     align-self: end;
+}
+
+.received{
+    background-color: white;
 }
 
