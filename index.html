@@ -112,7 +112,7 @@
                                 <div class="emoji">
                                     <i class="fa-regular fa-face-smile fa-xl"></i>
                                 </div>
-                                <input type="text" placeholder="Scrivi un messaggio">
+                                <input v-on:keyup.enter="newMessageInput()" v-model="newMessage" type="text" placeholder="Scrivi un messaggio">
                                 <div class="microphone">
                                     <i class="fa-solid fa-microphone fa-xl"></i>
                                 </div>
