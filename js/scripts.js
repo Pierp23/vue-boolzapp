@@ -184,7 +184,17 @@ createApp({
             this.contacts[this.indexActive].messages.push(inputMessage);
 
             this.newMessage = '';
-        }
+
+            setTimeout(()=>{
+                const outputMessage = {
+                    date: '',
+                    message: 'Ok',
+                    status: 'received'
+                }
+                this.contacts[this.indexActive].messages.push(outputMessage)
+            }, 1000)
+        },
+       
             
     }
 }).mount('#app')
