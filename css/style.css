@@ -6,3 +6,244 @@
 }
 
 /* GENERAL */
+body{
+    height: 100vh;
+}
+header{
+    background-color: green;
+    height: 15vh;
+    position: relative;
+}
+main{
+
+    width: 1000px;
+    height: 90vh;
+    margin: 0 auto;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.my-container{
+    height: 100%;
+    overflow: hidden;
+}
+
+.my-container .my-row{
+    display: flex;
+    height: 100%;
+}
+
+.my-container .my-row .col-sx{
+    width: calc(100% / 3 * 1);
+
+}
+
+.my-container .my-row .col-dx{
+    width: calc(100% / 3 * 2);
+    height: 100%;
+}
+
+.my-container .my-row .col-sx .top{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.my-container .top .user{
+    width: 100%;
+    background-color: lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.user-img{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+.user-img img{
+    width: 100%;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.user .user-sx .name-user{
+    font-size: 20px;
+    vertical-align: middle;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.user div i{
+    margin: 0 10px;
+    color: gray;
+}
+
+.my-container .top .notifica{
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.my-container .top .notifica .bell-icon{
+    display: flex;
+    color: aqua;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-container .top .notifica .notifica-text{
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.my-container .top .notifica .notifica-text p:first-child{
+    font-weight: bold;
+    font-size: 13px;
+    margin: 0;
+}
+
+.my-container .top .notifica .notifica-text p:last-child{
+    font-size: 10px;
+    color: gray;
+    text-decoration: underline;
+    margin: 0;
+}
+
+.my-container .top .search{
+    padding: 5px;
+}
+
+.my-container .bottom .chats .user-chat{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: lightgrey;
+}
+
+.my-container .bottom .chats .user-chat .user-chat-sx{
+    display: flex;
+}
+
+.my-container .bottom .chats .user-chat .user-chat-sx .user-chat-info{
+    margin-left: 10px
+}
+
+.my-container .bottom .chats .user-chat .user-chat-sx p:first-child{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.my-container .bottom .chats .user-chat .user-chat-sx p:last-child{
+    font-size: 10px;
+    color: grey;
+    margin: 0;
+}
+
+
+
+
+/* COLONNA DX */
+
+.my-container .col-dx .top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: lightgrey;
+}
+
+.my-container .col-dx .top .top-sx{
+    display: flex;
+}
+
+.my-container .col-dx .top .top-sx .user-chat-info{
+    margin-left: 10px
+}
+
+.my-container .col-dx .top .top-sx p:first-child{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.my-container .col-dx .top .top-sx p:last-child{
+    font-size: 10px;
+    color: grey;
+    margin: 0;
+}
+
+
+.my-container .col-dx .top .top-dx i{
+    margin: 0 10px;
+    color: gray;
+}
+
+.my-container .col-dx .bottom{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-image: url('../img/mine.jpg');
+}
+
+.my-container .col-dx .bottom .chat{
+    height: calc(100% - 120px)
+}
+
+.my-container .col-dx .bottom .bottom-nav{
+    background-color: lightgrey;
+    height: 60px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.my-container .col-dx .bottom .bottom-nav input{
+    width: 85%;
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+
+
+/* MESSAGGI */
+.my-container .col-dx .bottom .chat{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.my-container .col-dx .bottom .chat .message{
+    width: 200px;
+    margin: 10px 40px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.my-container .col-dx .bottom .chat .message .hour-message{
+    font-size: 8px;
+    text-align: end;
+}
+
+.my-container .col-dx .bottom .chat .send{
+    background-color: lightgreen;
+    align-self: end;
+}
+
