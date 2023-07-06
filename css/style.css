@@ -28,6 +28,7 @@ main{
 .my-container{
     height: 100%;
     overflow: hidden;
+    border: 1px solid black;
 }
 
 .my-container .my-row{
@@ -130,6 +131,7 @@ main{
     justify-content: space-between;
     padding: 10px;
     background-color: lightgrey;
+    border-top: 1px solid black;
 }
 
 .my-container .bottom .chats .user-chat .user-chat-sx{
