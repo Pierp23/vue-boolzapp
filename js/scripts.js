@@ -192,14 +192,14 @@ createApp({
             ],
             searchInput: '',
             filteredContacts: []
-            
         }
     },
     methods: {
         getNow(){
             const today = new Date();
-            const date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
-            const time = today.getHours() + ":" + today.getMinutes();
+            const date = today.getDate() + '/' + (today.getMonth()+1) + '/' + today.getFullYear();
+            const seconds = String(today.getSeconds()).padStart(2, '0');
+            const time = today.getHours() + ":" + today.getMinutes() + ':' + seconds;
             const dateTime = date + ' ' + time 
             return dateTime
         },

@@ -137,6 +137,7 @@ main{
 
 .my-container .bottom .chats .user-chat .user-chat-sx{
     display: flex;
+    width: 60%;
 }
 
 .my-container .bottom .chats .user-chat .user-chat-sx .user-chat-info{
