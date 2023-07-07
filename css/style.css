@@ -223,6 +223,13 @@ main{
     border-radius: 10px;
 }
 
+.clicked{
+    background-color: #EAEAEA;
+}
+
+.none{
+    display: none;
+}
 
 /* MESSAGGI */
 .my-container .col-dx .bottom .chat{
@@ -235,7 +242,7 @@ main{
 
 .my-container .col-dx .bottom .chat .message{
     width: 200px;
-    min-height: 60px;
+    min-height: fit-content;
     margin: 10px 40px;
     padding: 5px 10px;
     display: flex;
@@ -250,6 +257,7 @@ main{
     font-size: 8px;
     text-align: end;
     margin: 0;
+    padding: 5px 0;
 }
 
 .sent{
@@ -261,7 +269,5 @@ main{
     background-color: white;
 }
 
-.clicked{
-    background-color: #EAEAEA;
-}
+
 

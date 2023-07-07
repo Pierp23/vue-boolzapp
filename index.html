@@ -65,13 +65,13 @@
                                     <span class="input-group-text" id="addon-wrapping">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </span>
-                                    <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username" aria-describedby="addon-wrapping">
+                                    <input @keyup="searchInputFunction()" v-model="searchInput" type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username" aria-describedby="addon-wrapping">
                                 </div>
                             </div>
                         </div>
                         <div class="bottom">
-                            <div class="chats">
-                                <div @click="changeChat(index)" v-for="(singleContact, index) in contacts" class="user-chat" :class="index == 0 ? 'clicked':''">
+                            <div v-if="searchInput == ''"  class="chats">
+                                <div @click="changeChat(index)" v-for="(singleContact, index) in contacts"  class="user-chat" :class="index == indexActive? 'clicked':''">
                                     <div  class="user-chat-sx">
                                         <div class="user-img">
                                             <img v-bind:src="singleContact.avatar" :alt="singleContact.name">
@@ -86,10 +86,29 @@
                                     </div>
                                     <div class="user-chat-dx">
                                         <p>12:00</p>
-                                    </div>
-                                    
-                                </div>              
+                                    </div>        
+                                </div>                                            
                             </div>
+                            <div v-else="filteredContacts" class="chats">
+                                <div v-for="(singleContact, index) in filteredContacts" class="user-chat" :class="index == indexActive? 'clicked':''">
+                                    <div  class="user-chat-sx">
+                                        <div class="user-img">
+                                            <img v-bind:src="singleContact.avatar" :alt="singleContact.name">
+                                        </div>
+                                        <div class="user-chat-info">
+                                            <p class="name-user">
+                                                {{singleContact.name}}
+                                            </p>
+                                            <p>Ultimo messaggio inviato</p>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="user-chat-dx">
+                                        <p>12:00</p>
+                                    </div>        
+                                </div>
+                            </div>
+                              
                         </div>
                     </div>
                     <div class="col-dx">

@@ -189,7 +189,9 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
+            searchInput: '',
+            filteredContacts: []
             
         }
     },
@@ -222,6 +224,19 @@ createApp({
                 }
                 this.contacts[this.indexActive].messages.push(outputMessage)
             }, 1000)
+        },
+        searchInputFunction(){
+            this.filteredContacts = this.contacts.filter(singleContact =>{
+              
+                if( singleContact.name.toUpperCase().includes(this.searchInput.toUpperCase())){
+                return true
+                }
+
+                else{
+                return false
+                }
+                    
+            });
         }
     }
 }).mount('#app')
