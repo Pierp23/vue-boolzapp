@@ -4,8 +4,10 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Template</title>
+        <title>Boolzapp</title>
 
+        <!-- LUXON -->
+        <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
         <!-- AXIOS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- VUE JS -->
@@ -19,10 +21,9 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
 
-    <body id="app">
-        <header></header>
+    <body>
         <main>
-            <section class="my-container">
+            <section class="my-container" id="app">
                 <div class="my-row m-0">
                     <div class="col-sx">
                         <div class="top">
@@ -34,9 +35,18 @@
                                     <span class="name-user">Sofia</span>
                                 </div>
                                 <div class="user-dx">
-                                    <i class="fa-solid fa-circle-notch fa-xl" ></i>
-                                    <i class="fa-solid fa-message fa-xl"></i>
-                                    <i class="fa-solid fa-ellipsis-vertical fa-xl"></i>
+                                    <a href="#">
+                                        <i class="fa-solid fa-circle-notch fa-xl" ></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa-solid fa-message fa-xl"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa-solid fa-ellipsis-vertical fa-xl"></i>
+                                    </a>
+                                    
+                                    
+                                    
                                 </div>
                             </div>
                             <div class="notifica">
@@ -45,7 +55,9 @@
                                 </div>
                                 <div class="notifica-text">
                                     <p>Ricevi notifiche di nuovi messaggi</p>
-                                    <p>Attiva notifiche desktop</p>
+                                    <a href="#">
+                                        Attiva notifiche desktop
+                                    </a>                                        
                                 </div>
                             </div>
                             <div class="search">
@@ -59,7 +71,7 @@
                         </div>
                         <div class="bottom">
                             <div class="chats">
-                                <div @click="changeChat(index)" v-for="(singleContact, index) in contacts" class="user-chat">
+                                <div @click="changeChat(index)" v-for="(singleContact, index) in contacts" class="user-chat" :class="index == 0 ? 'clicked':''">
                                     <div  class="user-chat-sx">
                                         <div class="user-img">
                                             <img v-bind:src="singleContact.avatar" :alt="singleContact.name">
@@ -75,10 +87,8 @@
                                     <div class="user-chat-dx">
                                         <p>12:00</p>
                                     </div>
-                                </div>
-                                
-                                
-                                                    
+                                    
+                                </div>              
                             </div>
                         </div>
                     </div>
@@ -96,9 +106,15 @@
                                 </div>
                             </div>
                             <div class="top-dx">
-                                <i class="fa-solid fa-search fa-xl" ></i>
-                                <i class="fa-solid fa-paperclip fa-xl"></i>
-                                <i class="fa-solid fa-ellipsis-vertical fa-xl"></i>
+                                <a href="#">
+                                    <i class="fa-solid fa-search fa-xl" ></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa-solid fa-paperclip fa-xl"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa-solid fa-ellipsis-vertical fa-xl"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="bottom">
@@ -106,15 +122,23 @@
                             <div class="chat" >
                                 <div v-for="(singlemessage,index) in contacts[indexActive].messages" class="message" :class=" { 'sent' : singlemessage.status == 'sent', 'received' : singlemessage.status =='received' } ">
                                     {{singlemessage.message}}
+                                    <p class="hour-message">
+                                        {{singlemessage.date}}
+                                    </p>
                                 </div>
                             </div>
                             <div class="bottom-nav">
                                 <div class="emoji">
-                                    <i class="fa-regular fa-face-smile fa-xl"></i>
+                                    <a href="#">
+                                        <i class="fa-regular fa-face-smile fa-xl"></i>
+                                    </a>
                                 </div>
                                 <input v-on:keyup.enter="newMessageInput()" v-model="newMessage" type="text" placeholder="Scrivi un messaggio">
                                 <div class="microphone">
-                                    <i class="fa-solid fa-microphone fa-xl"></i>
+                                    <a href="#">
+                                        <i class="fa-solid fa-microphone fa-xl"></i>
+                                    </a>
+                                    
                                 </div>
                             </div> 
                         </div>

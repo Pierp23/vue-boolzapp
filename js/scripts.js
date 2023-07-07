@@ -108,7 +108,7 @@ createApp({
                     },
                     {
                         name: 'Claudia',
-                        avatar: './img/avatar_5.jpg',
+                        avatar: './img/avatar_6.jpg',
                         visible: true,
                         messages: [
                             {
@@ -123,7 +123,7 @@ createApp({
                             },
                             {
                         date: '10/01/2020 15:51:00',
-                        message: 'Nessuna nuova, buona nuova',
+                        message: 'Nessuna buona nuova',
                         status: 'sent'
                         }
                     ],
@@ -166,18 +166,47 @@ createApp({
                         status: 'received'
                         }
                     ],
+                },
+                {
+                    name: 'Fidanzata',
+                    avatar: './img/avatar_io.jpg',
+                    visible: true,
+                    messages: [
+                        {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Ciao, andiamo a mangiare la pizza stasera?',
+                        status: 'received'
+                        },
+                        {
+                        date: '10/01/2020 15:50:00',
+                        message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+                        status: 'sent'
+                        },
+                        {
+                        date: '10/01/2020 15:51:00',
+                        message: 'OK!!',
+                        status: 'received'
+                        }
+                    ],
                 }
             ]
             
         }
     },
     methods: {
+        getNow(){
+            const today = new Date();
+            const date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+            const time = today.getHours() + ":" + today.getMinutes();
+            const dateTime = date + ' ' + time 
+            return dateTime
+        },
         changeChat(i){
             this.indexActive = i;
         },
         newMessageInput(){
             const inputMessage = {
-                date: '',
+                date: this.getNow(),
                 message: this.newMessage,
                 status: 'sent'
             }
@@ -187,14 +216,12 @@ createApp({
 
             setTimeout(()=>{
                 const outputMessage = {
-                    date: '',
+                    date: this.getNow(),
                     message: 'Ok',
                     status: 'received'
                 }
                 this.contacts[this.indexActive].messages.push(outputMessage)
             }, 1000)
-        },
-       
-            
+        }
     }
 }).mount('#app')
