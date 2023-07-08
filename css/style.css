@@ -285,7 +285,7 @@ main{
     border-radius: 10px;
     padding: 5px 10px;
     position: absolute;
-    top: 60%;
+    bottom: 0;
     left: 0;
     z-index: 1;
     background-color: lightgrey;

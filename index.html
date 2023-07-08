@@ -160,9 +160,7 @@
                         </div>
                         <div class="bottom">
                             <div class="chat" >
-                                <div v-on:click.stop="getMessageId(index)"
-                                    
-                                v-for="(singleMessage,index) in contacts[indexActive].messages" class="message" :class=" { 'sent' : singleMessage.status == 'sent', 'received' : singleMessage.status =='received' } ">
+                                <div v-on:click.stop="getMessageId(index)" v-for="(singleMessage,index) in contacts[indexActive].messages" class="message" :class=" { 'sent' : singleMessage.status == 'sent', 'received' : singleMessage.status =='received' } ">
                                     <p>
                                         {{singleMessage.message}}
                                     </p> 

@@ -249,7 +249,13 @@ createApp({
             this.contacts[this.indexActive].messages[index] = this.clicked = true
         },
         getMessageId(index){
-            this.messageId = index
+            if(this.messageId == null){
+                this.messageId = index
+            }
+            else{
+                this.messageId = null
+            }
+            
         }
     }
 }).mount('#app')
