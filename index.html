@@ -71,24 +71,34 @@
                         </div>
                         <div class="bottom">
                             <div v-if="searchInput == ''"  class="chats">
-                                <div @click="changeChat(index)" v-for="(singleContact, index, i) in contacts"  class="user-chat" :class="index == indexActive? 'clicked':''">
-                                    <div  class="user-chat-sx">
-                                        <div class="user-img">
-                                            <img v-bind:src="singleContact.avatar" :alt="singleContact.name">
+                                <div v-for="(singleContact, index, i) in contacts">
+                                    <div @click="changeChat(index)" v-if="singleContact.messages.length > 0"  class="user-chat" :class="index == indexActive? 'clicked':''">
+                                        <div class="user-chat-sx">
+                                            <div class="user-img">
+                                                <img v-bind:src="singleContact.avatar" :alt="singleContact.name">
+                                            </div>
+                                            <div class="user-chat-info">
+                                                <p class="name-user">
+                                                    {{singleContact.name}}                                                
+                                                </p>
+                                                <p v-if="singleContact.messages.length > 0">
+                                                    {{singleContact.messages[singleContact.messages.length-1].message}}
+                                                </p>
+                                                <p v-else>
+                                                    Nessun messaggio
+                                                </p>
+                                            </div>
+                                            
                                         </div>
-                                        <div class="user-chat-info">
-                                            <p class="name-user">
-                                                {{singleContact.name}}                                                
+                                        <div class="user-chat-dx">
+                                            <p v-if="singleContact.messages.length > 0">
+                                                {{singleContact.messages[singleContact.messages.length-1].date.split(" ")[1]}}
                                             </p>
-                                            <p>{{singleContact.messages[singleContact.messages.length-1].message}}</p>
-                                        </div>
-                                        
+                                            <p v-else>
+                                                
+                                            </p>
+                                        </div>        
                                     </div>
-                                    <div class="user-chat-dx">
-                                        <p>
-                                            {{singleContact.messages[singleContact.messages.length-1].date.split(" ")[1]}}
-                                        </p>
-                                    </div>        
                                 </div>                                            
                             </div>
                             <div v-else="filteredContacts" class="chats">
@@ -116,7 +126,7 @@
                         </div>
                     </div>
                     <div class="col-dx">
-                        <div class="top">
+                        <div v-if="contacts[indexActive].messages.length > 0" class="top">
                             <div class="top-sx">
                                 <div class="user-img">
                                     <img :src="contacts[indexActive].avatar" :alt="contacts[indexActive].name">
@@ -125,8 +135,11 @@
                                     <p class="name-user">
                                         {{contacts[indexActive].name}}
                                     </p>
-                                    <p>
+                                    <p  v-if="contacts[indexActive].messages.length > 0">
                                         Ultimo messaggio alle ore {{contacts[indexActive].messages[contacts[indexActive].messages.length-1].date.split(" ")[1]}}
+                                    </p>
+                                    <p v-else>
+                                        Nessun messaggio
                                     </p>
                                 </div>
                             </div>
@@ -142,19 +155,29 @@
                                 </a>
                             </div>
                         </div>
+                        <div v-else class="top-alternative">
+
+                        </div>
                         <div class="bottom">
-                            
                             <div class="chat" >
-                                <div v-for="(singleMessage,index) in contacts[indexActive].messages" class="message" :class=" { 'sent' : singleMessage.status == 'sent', 'received' : singleMessage.status =='received' } ">
+                                <div v-on:click.stop="getMessageId(index)"
+                                    
+                                v-for="(singleMessage,index) in contacts[indexActive].messages" class="message" :class=" { 'sent' : singleMessage.status == 'sent', 'received' : singleMessage.status =='received' } ">
                                     <p>
                                         {{singleMessage.message}}
                                     </p> 
                                     <p class="hour-message">
                                         {{singleMessage.date}}
                                     </p>
+                                    <div v-if="messageId == index" class="remove-div">
+                                        <div @click.stop="removeMessage(index)">
+                                            Cancella il messaggio
+                                        </div>
+                                    </div>
                                 </div>
+                                
                             </div>
-                            <div class="bottom-nav">
+                            <div v-if="contacts[indexActive].messages.length > 0" class="bottom-nav">
                                 <div class="emoji">
                                     <a href="#">
                                         <i class="fa-regular fa-face-smile fa-xl"></i>

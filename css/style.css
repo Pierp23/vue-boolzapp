@@ -169,6 +169,12 @@ main{
     background-color: #EAEAEA;
 }
 
+.my-container .col-dx .top-alternative{
+    height: 60px;
+    padding: 10px;
+    background-color: #EAEAEA;
+}
+
 .my-container .col-dx .top .top-sx{
     display: flex;
 }
@@ -242,6 +248,7 @@ main{
 }
 
 .my-container .col-dx .bottom .chat .message{
+    position: relative;
     width: 200px;
     min-height: fit-content;
     margin: 10px 40px;
@@ -270,5 +277,18 @@ main{
     background-color: white;
 }
 
+.remove-div{
+    width: 100%;
+    min-height: fit-content;
+    font-size: 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 60%;
+    left: 0;
+    z-index: 1;
+    background-color: lightgrey;
+}
 
 

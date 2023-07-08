@@ -3,6 +3,7 @@ const {createApp} = Vue;
 createApp({
     data(){
         return  {
+            messageId: null,
             indexActive: 0,
             newMessage: '',
             contacts: [
@@ -191,7 +192,8 @@ createApp({
                 }
             ],
             searchInput: '',
-            filteredContacts: []
+            filteredContacts: [],
+            clicked: false
         }
     },
     methods: {
@@ -237,6 +239,17 @@ createApp({
                 }
                     
             });
+        },
+        removeMessage(index){
+            this.contacts[this.indexActive].messages.splice(index, 1);
+            this.messageId = null
+            index = 0
+        },
+        clickFunction(index){
+            this.contacts[this.indexActive].messages[index] = this.clicked = true
+        },
+        getMessageId(index){
+            this.messageId = index
         }
     }
 }).mount('#app')
