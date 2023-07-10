@@ -25,14 +25,18 @@
         <main>
             <section class="my-container" id="app">
                 <div class="my-row m-0">
+
+                    <!-- COLONNA DI SX -->
                     <div class="col-sx">
                         <div class="top">
                             <div class="user">
                                 <div class="user-sx">
                                     <div class="user-img">
-                                        <img src="img/avatar_io.jpg" alt="Sofia">
+                                        <img src="img/avatar_2.jpg" alt="Pierpaolo">
                                     </div>
-                                    <span class="name-user">Sofia</span>
+                                    <span class="name-user">
+                                        Pierpaolo
+                                    </span>
                                 </div>
                                 <div class="user-dx">
                                     <a href="#">
@@ -44,9 +48,6 @@
                                     <a href="#">
                                         <i class="fa-solid fa-ellipsis-vertical fa-xl"></i>
                                     </a>
-                                    
-                                    
-                                    
                                 </div>
                             </div>
                             <div class="notifica">
@@ -54,7 +55,9 @@
                                     <i class="fa-solid fa-bell-slash fa-xl"></i>
                                 </div>
                                 <div class="notifica-text">
-                                    <p>Ricevi notifiche di nuovi messaggi</p>
+                                    <p>
+                                        Ricevi notifiche di nuovi messaggi
+                                    </p>
                                     <a href="#">
                                         Attiva notifiche desktop
                                     </a>                                        
@@ -70,9 +73,9 @@
                             </div>
                         </div>
                         <div class="bottom">
-                            <div v-if="searchInput == ''"  class="chats">
+                            <div class="chats">
                                 <div v-for="(singleContact, index, i) in contacts">
-                                    <div @click="changeChat(index)" v-if="singleContact.messages.length > 0"  class="user-chat" :class="index == indexActive? 'clicked':''">
+                                    <div @click="changeChat(index)" v-if="singleContact.visible" class="user-chat" :class="index == indexActive? 'clicked':''">
                                         <div class="user-chat-sx">
                                             <div class="user-img">
                                                 <img v-bind:src="singleContact.avatar" :alt="singleContact.name">
@@ -87,8 +90,7 @@
                                                 <p v-else>
                                                     Nessun messaggio
                                                 </p>
-                                            </div>
-                                            
+                                            </div>                                            
                                         </div>
                                         <div class="user-chat-dx">
                                             <p v-if="singleContact.messages.length > 0">
@@ -100,33 +102,13 @@
                                         </div>        
                                     </div>
                                 </div>                                            
-                            </div>
-                            <div v-else="filteredContacts" class="chats">
-                                <div v-for="(singleContact, index) in filteredContacts" class="user-chat" :class="index == indexActive? 'clicked':''">
-                                    <div  class="user-chat-sx">
-                                        <div class="user-img">
-                                            <img v-bind:src="singleContact.avatar" :alt="singleContact.name">
-                                        </div>
-                                        <div class="user-chat-info">
-                                            <p class="name-user">
-                                                {{singleContact.name}}
-                                            </p>
-                                            <p>Ultimo messaggio inviato</p>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="user-chat-dx">
-                                        <p>
-                                            {{singleContact.messages[singleContact.messages.length-1].date.split(" ")[1]}}
-                                        </p>
-                                    </div>        
-                                </div>
-                            </div>
-                              
+                            </div>                              
                         </div>
                     </div>
+
+                    <!-- COLONNA DI DX -->
                     <div class="col-dx">
-                        <div v-if="contacts[indexActive].messages.length > 0" class="top">
+                        <div  class="top">
                             <div class="top-sx">
                                 <div class="user-img">
                                     <img :src="contacts[indexActive].avatar" :alt="contacts[indexActive].name">
@@ -155,12 +137,12 @@
                                 </a>
                             </div>
                         </div>
-                        <div v-else class="top-alternative">
 
-                        </div>
+
+                        <!-- CHAT CON MESSAGGI -->
                         <div class="bottom">
-                            <div class="chat" >
-                                <div v-on:click.stop="getMessageId(index)" v-for="(singleMessage,index) in contacts[indexActive].messages" class="message" :class=" { 'sent' : singleMessage.status == 'sent', 'received' : singleMessage.status =='received' } ">
+                            <div v-if="contacts[indexActive].messages.length > 0" class="chat">
+                                <div v-on:click.stop="getMessageId(index)" v-for="(singleMessage,index) in contacts[indexActive].messages" class="message" :class="singleMessage.status == 'sent' ? 'sent' : 'received'">
                                     <p>
                                         {{singleMessage.message}}
                                     </p> 
@@ -172,10 +154,16 @@
                                             Cancella il messaggio
                                         </div>
                                     </div>
-                                </div>
-                                
+                                </div>                                
                             </div>
-                            <div v-if="contacts[indexActive].messages.length > 0" class="bottom-nav">
+                            <div v-else class="chat">
+                                <div class="no-message">
+                                    <p>
+                                        NESSUN MESSAGGIO
+                                    </p>
+                                </div>                                
+                            </div>
+                            <div class="bottom-nav">
                                 <div class="emoji">
                                     <a href="#">
                                         <i class="fa-regular fa-face-smile fa-xl"></i>
@@ -185,15 +173,13 @@
                                 <div class="microphone">
                                     <a href="#">
                                         <i class="fa-solid fa-microphone fa-xl"></i>
-                                    </a>
-                                    
+                                    </a>                                    
                                 </div>
                             </div> 
                         </div>
                     </div>
                 </div>
             </section>
-
         </main>
         
         <script type="text/javascript" src="js/scripts.js"></script>

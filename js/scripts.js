@@ -191,9 +191,6 @@ createApp({
                     ],
                 }
             ],
-            searchInput: '',
-            filteredContacts: [],
-            clicked: false
         }
     },
     methods: {
@@ -215,7 +212,6 @@ createApp({
                 status: 'sent'
             }
             this.contacts[this.indexActive].messages.push(inputMessage);
-
             this.newMessage = '';
 
             setTimeout(()=>{
@@ -228,25 +224,17 @@ createApp({
             }, 1000)
         },
         searchInputFunction(){
-            this.filteredContacts = this.contacts.filter(singleContact =>{
-              
-                if( singleContact.name.toUpperCase().includes(this.searchInput.toUpperCase())){
-                return true
+            this.contacts.forEach(singleContact =>{
+                singleContact.visible = true
+                if( !singleContact.name.toLowerCase().includes(this.searchInput.toLowerCase())){
+                    singleContact.visible = false
                 }
-
-                else{
-                return false
-                }
-                    
-            });
+            })
         },
         removeMessage(index){
             this.contacts[this.indexActive].messages.splice(index, 1);
             this.messageId = null
             index = 0
-        },
-        clickFunction(index){
-            this.contacts[this.indexActive].messages[index] = this.clicked = true
         },
         getMessageId(index){
             if(this.messageId == null){
@@ -255,7 +243,6 @@ createApp({
             else{
                 this.messageId = null
             }
-            
         }
     }
 }).mount('#app')
