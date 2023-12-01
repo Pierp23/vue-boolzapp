@@ -13,3 +13,5 @@ Stack:
   - Axios
   - Bootstrap
   - HTML, CSS
+
+<img width="100%" src="./project_completed.png" alt="project_completed_img" />
